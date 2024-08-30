@@ -1,5 +1,6 @@
-streamlit==1.26.0
-pandas==2.1.0
-numpy==1.25.2
-scikit-learn==1.3.0
-xgboost==1.7.6
+flask
+liask_cors
+pandas
+numpy
+datetime
+pickle
