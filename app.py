@@ -1,123 +1,69 @@
-from flask import Flask,render_template,url_for,request,jsonify
-from flask_cors import cross_origin
+import streamlit as st
 import pandas as pd
-import numpy as np
-import datetime
 import pickle
 
-
-
-app = Flask(__name__, template_folder="template")
+# Load the model
 model = pickle.load(open(r"Models\xgb.pkl", "rb"))
-print("Model Loaded")
+st.write("Model Loaded")
 
-@app.route("/",methods=['GET'])
-@cross_origin()
-def home():
-	return render_template("index.html")
+# Define the prediction function
+def predict_weather(input_data):
+    prediction = model.predict([input_data])
+    return prediction[0]
 
-@app.route("/predict",methods=['GET', 'POST'])
-@cross_origin()
-def predict():
-	if request.method == "POST":
-		# DATE
-		date = request.form['date']
-		day = float(pd.to_datetime(date, format="%Y-%m-%d").day)
-		month = float(pd.to_datetime(date, format="%Y-%m-%d").month)   
-		year = float(pd.to_datetime(date, format="%Y-%m-%d").year)   
-		# MinTemp
-		minTemp = float(request.form['mintemp'])
-		# MaxTemp
-		maxTemp = float(request.form['maxtemp'])
-		# Rainfall
-		rainfall = float(request.form['rainfall'])
-		# Evaporation
-		evaporation = float(request.form['evaporation'])
-		# Sunshine
-		sunshine = float(request.form['sunshine'])
-		# Wind Gust Speed
-		windGustSpeed = float(request.form['windgustspeed'])
-		# Wind Speed 9am
-		windSpeed9am = float(request.form['windspeed9am'])
-		# Wind Speed 3pm
-		windSpeed3pm = float(request.form['windspeed3pm'])
-		# Humidity 9am
-		humidity9am = float(request.form['humidity9am'])
-		# Humidity 3pm
-		humidity3pm = float(request.form['humidity3pm'])
-		# Pressure 9am
-		pressure9am = float(request.form['pressure9am'])
-		# Pressure 3pm
-		pressure3pm = float(request.form['pressure3pm'])
-		# Temperature 9am
-		temp9am = float(request.form['temp9am'])
-		# Temperature 3pm
-		temp3pm = float(request.form['temp3pm'])
-		# Cloud 9am
-		cloud9am = float(request.form['cloud9am'])
-		# Cloud 3pm
-		cloud3pm = float(request.form['cloud3pm'])
-		# Cloud 3pm
-		location = float(request.form['location'])
-		# Wind Dir 9am
-		winddDir9am = float(request.form['winddir9am'])
-		# Wind Dir 3pm
-		winddDir3pm = float(request.form['winddir3pm'])
-		# Wind Gust Dir
-		windGustDir = float(request.form['windgustdir'])
-		# Rain Today
-		rainToday = float(request.form['raintoday'])
+# App title
+st.title("Weather Prediction App")
 
-		input_lst = [[location , minTemp , maxTemp , rainfall , evaporation , sunshine ,
-					 windGustDir , windGustSpeed , winddDir9am , winddDir3pm , windSpeed9am , windSpeed3pm ,
-					 humidity9am , humidity3pm , pressure9am , pressure3pm , cloud9am , cloud3pm , temp9am , temp3pm ,
-					 rainToday , year, month , day]]
-		pred = model.predict(input_lst)
-		output = pred
-		if output == 0:
-			return render_template("after_sunny.html")
-		else:
-			return render_template("after_rainy.html")
-	return render_template("predictor.html")
+# Input form
+with st.form("prediction_form"):
+    # Date input
+    date = st.date_input("Select a date")
+    day = float(pd.to_datetime(date).day)
+    month = float(pd.to_datetime(date).month)
+    year = float(pd.to_datetime(date).year)
 
-if __name__=='__main__':
-	app.run(debug=True)
+    # Weather parameters inputs
+    minTemp = st.number_input("Min Temperature", format="%.2f")
+    maxTemp = st.number_input("Max Temperature", format="%.2f")
+    rainfall = st.number_input("Rainfall", format="%.2f")
+    evaporation = st.number_input("Evaporation", format="%.2f")
+    sunshine = st.number_input("Sunshine", format="%.2f")
+    windGustSpeed = st.number_input("Wind Gust Speed", format="%.2f")
+    windSpeed9am = st.number_input("Wind Speed at 9am", format="%.2f")
+    windSpeed3pm = st.number_input("Wind Speed at 3pm", format="%.2f")
+    humidity9am = st.number_input("Humidity at 9am", format="%.2f")
+    humidity3pm = st.number_input("Humidity at 3pm", format="%.2f")
+    pressure9am = st.number_input("Pressure at 9am", format="%.2f")
+    pressure3pm = st.number_input("Pressure at 3pm", format="%.2f")
+    temp9am = st.number_input("Temperature at 9am", format="%.2f")
+    temp3pm = st.number_input("Temperature at 3pm", format="%.2f")
+    cloud9am = st.number_input("Cloud coverage at 9am", format="%.2f")
+    cloud3pm = st.number_input("Cloud coverage at 3pm", format="%.2f")
+    
+    # Additional inputs
+    location = st.number_input("Location (encoded)", format="%.2f")
+    windDir9am = st.number_input("Wind Direction at 9am (encoded)", format="%.2f")
+    windDir3pm = st.number_input("Wind Direction at 3pm (encoded)", format="%.2f")
+    windGustDir = st.number_input("Wind Gust Direction (encoded)", format="%.2f")
+    rainToday = st.number_input("Rain Today (0 for No, 1 for Yes)", format="%.2f")
 
+    # Submit button
+    submit = st.form_submit_button("Predict")
 
-
-
-
-# from flask import Flask, render_template
-
-# app = Flask(__name__)
-
-# @app.route('/')
-# def home():
-
-#     locations = [
-#         'Adelaide', 'Albany', 'AliceSprings', 'BadgerysCreek', 'Ballarat', 
-#         'Bendigo', 'Brisbane', 'Cairns', 'Canberra', 'CoffsHarbour', 
-#         'Darwin', 'Dartmoor', 'GoldCoast', 'Hobart', 'Katherine', 
-#         'Launceston', 'Melbourne', 'MelbourneAirport', 'Mildura', 'MountGambier', 
-#         'MountGinini', 'Nhil', 'Newcastle', 'NorahHead', 'NorfolkIsland', 
-#         'Nuriootpa', 'PearceRAAF', 'Perth', 'PerthAirport', 'Portland', 
-#         'Richmond', 'SalmonGums', 'Sale', 'Sydney', 'SydneyAirport', 
-#         'Tuggeranong', 'Townsville', 'Uluru', 'WaggaWagga', 'Walpole', 
-#         'Watsonia', 'Witchcliffe', 'Williamtown', 'Wollongong', 'Woomera'
-#     ]
-
-#     return render_template("index.html", locations=locations)
-
-# if __name__ == '__main__':
-#     app.run(debug=True)
-
-
-
-
-
-
-
-
-# df["Date_year"] = df["Date"].dt.year
-# df["Date_month"] = df["Date"].dt.month
-# df["Date_day"] = df["Date"].dt.day
+# Prediction
+if submit:
+    input_data = [
+        location, minTemp, maxTemp, rainfall, evaporation, sunshine,
+        windGustDir, windGustSpeed, windDir9am, windDir3pm, windSpeed9am, windSpeed3pm,
+        humidity9am, humidity3pm, pressure9am, pressure3pm, cloud9am, cloud3pm,
+        temp9am, temp3pm, rainToday, year, month, day
+    ]
+    
+    # Get prediction
+    prediction = predict_weather(input_data)
+    
+    # Display result
+    if prediction == 0:
+        st.success("It's a Sunny day")
+    else:
+        st.success("It's a Rainy day")
