@@ -1,5 +1,5 @@
 flask
-liask_cors
+flask_cors
 pandas
 numpy
 datetime
