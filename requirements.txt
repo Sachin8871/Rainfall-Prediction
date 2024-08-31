@@ -1,5 +1,4 @@
-flask
-flask_cors
+streamlit
 pandas
-numpy
-datetime
+scikit-learn
+xgboost
