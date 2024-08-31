@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 
 # Load the model
-model = pickle.load(open("xgb.pkl", "rb"))
+model = pickle.load(open("Models/xgb.pkl", "rb"))
 
 # Define the prediction function
 def predict_weather(input_data):
