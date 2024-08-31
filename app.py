@@ -3,8 +3,8 @@ import pandas as pd
 import pickle
 
 # Load the model
-model = pickle.load(open(r"Models\xgb.pkl", "rb"))
-st.write("Model Loaded")
+with open("Models/xgb.pklz", "rb") as file:
+    model = pickle.load(file)
 
 # Define the prediction function
 def predict_weather(input_data):
