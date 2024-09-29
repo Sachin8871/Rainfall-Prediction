@@ -1,7 +1,3 @@
-Here's a sample `README.md` for your "Rainfall Prediction" project:
-
----
-
 # **Rainfall Prediction Using Machine Learning**
 
 This project aims to predict whether it will rain tomorrow using historical weather data from the **weatherAUS** dataset (sourced from [Kaggle](https://www.kaggle.com/datasets/jsphyg/weather-dataset-rattle-package)). The prediction is modeled as a binary classification problem, where various machine learning algorithms are applied, and the best-performing model is deployed using Streamlit for an interactive user experience.
@@ -152,10 +148,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you have any questions or suggestions, feel free to reach out to me at:
 
-- **Email**: [your-email@example.com](mailto:your-email@example.com)
-- **LinkedIn**: [Your LinkedIn](https://www.linkedin.com/in/yourprofile/)
-- **GitHub**: [Your GitHub](https://github.com/your-username)
-
----
-
-This `README.md` provides a clear overview of your project, installation instructions, and usage guidelines. Let me know if you need any additional adjustments or specific details!
+- **Email**: [sachindhakad211023@gmail.com]
+- **LinkedIn**: [https://www.linkedin.com/in/sachin-kumar88/]
+- **GitHub**: [https://github.com/Sachin8871]
