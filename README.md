@@ -64,7 +64,7 @@ Before running the project, ensure you have the following dependencies installed
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/rainfall-prediction.git
+   git clone https://github.com/Sachin8871/Rainfall-Prediction.git
    ```
 2. Navigate to the project directory:
    ```bash
@@ -104,11 +104,17 @@ Each model was evaluated using metrics such as **Accuracy**, **Precision**, **Re
 
 After training and evaluating all models, **XGBClassifier** emerged as the best-performing model with the following metrics:
 
-- **Accuracy**: [insert accuracy here]
-- **Precision**: [insert precision here]
-- **Recall**: [insert recall here]
-- **F1-Score**: [insert F1-score here]
-- **ROC-AUC**: [insert ROC-AUC score here]
+Accuracy: 85.63%
+Precision
+False (No Rain): 0.88
+True (Rain): 0.72
+Recall
+False (No Rain): 0.94
+True (Rain): 0.56
+F1-Score
+False (No Rain): 0.91
+True (Rain): 0.63
+
 
 ## **Deployment**
 
@@ -118,6 +124,7 @@ To run the app, use the following command:
 ```bash
 streamlit run app.py
 ```
+-**Streamlit App**: [https://rainfall-prediction-lobkjmcpdg8axhje5ungim.streamlit.app/]
 
 ## **Future Work**
 
@@ -127,20 +134,6 @@ Some possible future improvements and extensions for this project include:
 - **Improved Model Performance**: Experiment with other advanced models or ensemble methods to boost accuracy.
 - **Data Enrichment**: Add more features, such as climate indices or satellite data, for better predictions.
 - **Enhanced UI/UX**: Improve the visual design and add more interactive features to the Streamlit app.
-
-## **Contributing**
-
-Contributions are welcome! If you'd like to contribute to this project, please:
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Commit your changes (`git commit -m 'Add some feature'`).
-4. Push to the branch (`git push origin feature-branch`).
-5. Open a pull request.
-
-## **License**
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
