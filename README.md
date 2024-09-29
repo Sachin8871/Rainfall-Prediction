@@ -13,8 +13,6 @@ This project aims to predict whether it will rain tomorrow using historical weat
 - [Model Evaluation](#model-evaluation)
 - [Deployment](#deployment)
 - [Future Work](#future-work)
-- [Contributing](#contributing)
-- [License](#license)
 
 ---
 
@@ -124,7 +122,7 @@ To run the app, use the following command:
 ```bash
 streamlit run app.py
 ```
--**Streamlit App**: [https://rainfall-prediction-lobkjmcpdg8axhje5ungim.streamlit.app/]
+**Streamlit App**: [https://rainfall-prediction-lobkjmcpdg8axhje5ungim.streamlit.app/](https://rainfall-prediction-lobkjmcpdg8axhje5ungim.streamlit.app/)
 
 ## **Future Work**
 
@@ -141,6 +139,6 @@ Some possible future improvements and extensions for this project include:
 
 If you have any questions or suggestions, feel free to reach out to me at:
 
-- **Email**: [sachindhakad211023@gmail.com]
-- **LinkedIn**: [https://www.linkedin.com/in/sachin-kumar88/]
-- **GitHub**: [https://github.com/Sachin8871]
+- **Email**: [sachindhakad211023@gmail.com](sachindhakad211023@gmail.com)
+- **LinkedIn**: [https://www.linkedin.com/in/sachin-kumar88/](https://www.linkedin.com/in/sachin-kumar88/)
+- **GitHub**: [https://github.com/Sachin8871](https://github.com/Sachin8871)
