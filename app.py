@@ -27,7 +27,7 @@ with st.form("prediction_form"):
     location = st.number_input("Location (encoded)", format="%.2f")
 
     st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown("<h5>Temperature of that day</h5>", unsafe_allow_html=True)
+    st.markdown("<h5>Temperature of the day</h5>", unsafe_allow_html=True)
     col1, col2, cola1, cola2 = st.columns(4)
     with col1:
         minTemp = st.number_input("Min Temperature", format="%.2f")
